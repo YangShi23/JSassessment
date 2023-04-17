@@ -1,0 +1,152 @@
+<html>
+
+<head>
+    <style>
+        #header {
+            background-color: burlywood;
+            color: black;
+            text-align: center;
+            padding: 5px;
+        }
+
+        #footer {
+            background-color: burlywood;
+            color: black;
+            text-align: center;
+            padding: 5px;
+        }
+
+        table {
+            table-layout: fixed;
+            width: 100%
+        }
+
+        .form-input {
+            width: 700px;
+        }
+    </style>
+</head>
+
+<body>
+    <table border="1">
+        <tr>
+
+            <td>
+                <div><img src="Jsimage.jpeg" width="700px" height="770px" /></div>
+            </td>
+            <td>
+                <div id="header">
+                    <h1>Ticket Booking Form</h1>
+                </div>
+                <br /><br /><br />
+                <form name="myform" onsubmit="return validateAll()" action="newHTML.html" method="post">
+                    <span>Name</span>
+                    <br />
+                    <input type="text" class="form-input" id="username" name="username" pattern="[a-zA-Z]{3,}"
+                        title="Only Alphabets" />
+                    <br /><br /> <br />
+                    <span>DOB</span>
+                    <br />
+                    <Input type="date" class="form-input" id="birth" name="birth" />
+                    <br /><br> <br />
+                    <span>Mobile</span>
+                    <br />
+                    <input type="tel" class="form-input" id="tel" name="tel" />
+                    <br /><br> <br />
+                    <span>Email</span>
+                    <br />
+                    <input type="email" class="form-input" id="email" name="email" />
+                    <br /><br /> <br />
+                    <span>Password</span>
+                    <br />
+                    <input type="password" class="form-input" id="password" name="password" />
+                    <br /><br /> <br /><br /> <br /><br/><br/>
+                    <div align="center"><button style="background-color:burlywood">Submit </button></div>
+                </form>
+                <br /> <br /> <br />
+                <div id="footer">
+                    <h3><a href="Contact.html">Contact Us</a></h3>
+                </div>
+        </tr>
+    </table>
+    <script>
+        function validUsername() {
+            let uname = document.myform.username.value;
+            if (uname == "null" || uname == "") {
+                alert("Plaease enter correctname");
+                return false;
+            }
+            return true;
+        }
+
+        function validDOB() {
+            let dob2 = document.myform.birth.value;
+            let curdate = new Date();
+            let inputDate = new Date(dob2);
+            if (inputDate > curdate || dob2 == "null" || dob2 == "")
+            {
+                alert("Please enter the correct DOB");
+                return false;
+            }
+            return true;
+        }
+        function validMobile() {
+            let mobile1 = document.myform.tel.value;
+            if (mobile1.length == 10) {
+                return true
+            }
+            else {
+                alert("Please enter Mobile the correct 10 digits number");
+                return false;
+            }
+        }
+        function validEmail() {
+            let mymail = document.myform.email.value;
+            let attherate = mymail.indexOf("@");
+            let atthedot = mymail.lastIndexOf(".");
+
+            if (attherate < 1 || atthedot < attherate + 3 || atthedot >= mymail.length) {
+                alert("Please enter the correct email");
+                return false;
+            }
+            return true;
+        }
+        function validPassword() {
+                let password1 = document.myform.password.value;
+                if (password1.length < 7) {
+                    alert("Please enter password over 6 charcters")
+                    return false;
+                }
+                return true;
+            }
+        function validateAll() {
+            let isValid = true;
+
+            if (isValid) {
+               isValid = validDOB();
+            }
+            
+            if (isValid) {
+                isValid = validPassword();
+            }
+
+            if (isValid) {
+                isValid = validUsername();
+            }
+
+
+            if (isValid) {
+                isValid = validMobile();
+            }
+
+            if (isValid) {
+                isValid = validEmail();
+            }
+
+            return isValid;
+        }
+    </script>
+
+</body>
+
+</html>
